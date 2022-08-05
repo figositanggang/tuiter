@@ -1,46 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const MaterialColor myBlue = MaterialColor(
-  _myBluePrimary,
-  <int, Color>{
-    50: Color.fromRGBO(100, 100, 200, 1),
-    100: Color.fromRGBO(100, 100, 200, 1),
-    200: Color.fromRGBO(100, 100, 200, 1),
-    300: Color.fromRGBO(100, 100, 200, 1),
-    400: Color.fromRGBO(100, 100, 200, 1),
-    500: Color(_myBluePrimary),
-    600: Color.fromRGBO(100, 100, 200, 1),
-    700: Color.fromRGBO(100, 100, 200, 1),
-    800: Color.fromRGBO(100, 100, 200, 1),
-    900: Color.fromRGBO(100, 100, 200, 1),
-  },
-);
-
-const int _myBluePrimary = 0xFF00D0FF;
-
-const MaterialColor myDarkBlue = MaterialColor(
-  _myDarkBluePrimary,
-  <int, Color>{
-    50: Color.fromRGBO(100, 100, 200, 1),
-    100: Color.fromRGBO(100, 100, 200, 1),
-    200: Color.fromRGBO(100, 100, 200, 1),
-    300: Color.fromRGBO(100, 100, 200, 1),
-    400: Color.fromRGBO(100, 100, 200, 1),
-    500: Color(_myBluePrimary),
-    600: Color.fromRGBO(100, 100, 200, 1),
-    700: Color.fromRGBO(100, 100, 200, 1),
-    800: Color.fromRGBO(100, 100, 200, 1),
-    900: Color.fromRGBO(100, 100, 200, 1),
-  },
-);
-
-const int _myDarkBluePrimary = 0xFF002429;
-
 late ThemeData myDarkMode = ThemeData(
-  primarySwatch: myDarkBlue,
-  backgroundColor: Color(_myDarkBluePrimary),
+  backgroundColor: Color(0xFF002429),
   fontFamily: GoogleFonts.poppins().fontFamily,
-  primaryColor: myDarkBlue.shade900,
   bottomAppBarColor: Colors.yellow,
+  scaffoldBackgroundColor: Color.fromARGB(255, 3, 15, 24),
+  colorScheme: ColorScheme(
+    brightness: Brightness.dark,
+    primary: Color(0xFF002429),
+    onPrimary: Color.fromARGB(255, 0, 145, 255),
+    secondary: Color.fromARGB(255, 32, 48, 60),
+    onSecondary: Color.fromARGB(255, 86, 134, 170),
+    error: Color.fromARGB(255, 48, 13, 10),
+    onError: Colors.red,
+    background: Color.fromARGB(255, 9, 14, 18),
+    onBackground: Color.fromARGB(255, 207, 233, 255),
+    surface: Color.fromARGB(255, 24, 38, 49),
+    onSurface: Color.fromARGB(255, 41, 162, 255),
+  ),
+  textTheme: TextTheme(
+    bodyText1: GoogleFonts.poppins(),
+    bodyText2: GoogleFonts.poppins(),
+  ).apply(
+    bodyColor: Colors.white,
+    displayColor: Colors.red,
+  ),
+  primaryTextTheme: TextTheme(
+    bodyText1: GoogleFonts.poppins(),
+    bodyText2: GoogleFonts.poppins(),
+  ).apply(
+    bodyColor: Colors.white,
+    displayColor: Colors.red,
+  ),
 );

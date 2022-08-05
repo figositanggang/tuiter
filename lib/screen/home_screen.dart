@@ -13,7 +13,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Tuiter"),
+        title: Icon(Icons.transfer_within_a_station_rounded),
+        // backgroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
         child: ListView(

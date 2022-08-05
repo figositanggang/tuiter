@@ -35,11 +35,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Tuiter',
       theme: ThemeData(
-        // primarySwatch: Colors.blue,
         fontFamily: GoogleFonts.poppins().fontFamily,
       ),
-      // darkTheme: myDarkMode,
-      // themeMode: ThemeMode.light,
+      darkTheme: myDarkMode,
+      themeMode: ThemeMode.system,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -90,7 +89,6 @@ class _MyHomePageState extends State<MyHomePage> {
     final bottomNavProv = Provider.of<BottomNavProv>(context);
 
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 38, 38, 38),
       body: PageView(
         controller: _pageController,
         children: _body,
@@ -105,6 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
           bottomNavProv.setIndex = index;
           _pageController.jumpToPage(index);
         },
+        // duration: Duration(microseconds: 100),
       ),
     );
   }
