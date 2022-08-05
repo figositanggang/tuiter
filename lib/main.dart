@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:bottom_bar/bottom_bar.dart';
 
 import './style.dart';
 
@@ -56,26 +57,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<BottomNavigationBarItem> _bottomNavItems = [
-    BottomNavigationBarItem(
+  List<BottomBarItem> _bottomBarItems = [
+    BottomBarItem(
       icon: Icon(Icons.home),
-      label: "Home",
-      tooltip: "Home",
+      activeColor: Colors.blue,
     ),
-    BottomNavigationBarItem(
+    BottomBarItem(
       icon: Icon(Icons.search),
-      label: "Search",
-      tooltip: "Search",
+      activeColor: Colors.blue,
     ),
-    BottomNavigationBarItem(
+    BottomBarItem(
       icon: Icon(Icons.notifications),
-      label: "Notifications",
-      tooltip: "Notifications",
+      activeColor: Colors.blue,
     ),
-    BottomNavigationBarItem(
+    BottomBarItem(
       icon: Icon(Icons.mail),
-      label: "Mail",
-      tooltip: "Mail",
+      activeColor: Colors.blue,
     ),
   ];
 
@@ -86,27 +83,28 @@ class _MyHomePageState extends State<MyHomePage> {
     MailScreen(),
   ];
 
+  final _pageController = PageController();
+
   @override
   Widget build(BuildContext context) {
     final bottomNavProv = Provider.of<BottomNavProv>(context);
 
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 38, 38, 38),
-      body: _body[bottomNavProv.getIndex],
-      bottomNavigationBar: Container(
-        color: Colors.yellow,
-        height: 100,
-        width: MediaQuery.of(context).size.width,
-        child: BottomNavigationBar(
-          currentIndex: bottomNavProv.getIndex,
-          onTap: (props) => bottomNavProv.setIndex = props,
-          items: _bottomNavItems,
-          selectedItemColor: Colors.green,
-          unselectedItemColor: Colors.red,
-          selectedFontSize: 10,
-          unselectedFontSize: 10,
-          // backgroundColor: Theme.of(context).primaryColor,
-        ),
+      body: PageView(
+        controller: _pageController,
+        children: _body,
+        onPageChanged: (index) {
+          bottomNavProv.setIndex = index;
+        },
+      ),
+      bottomNavigationBar: BottomBar(
+        selectedIndex: bottomNavProv.getIndex,
+        items: _bottomBarItems,
+        onTap: (index) {
+          bottomNavProv.setIndex = index;
+          _pageController.jumpToPage(index);
+        },
       ),
     );
   }
